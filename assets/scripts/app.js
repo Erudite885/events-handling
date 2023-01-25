@@ -151,9 +151,26 @@ class ProjectList {
     this.connectDroppable();
   }
 
-  // connectDroppable (){
+  connectDroppable() {
+    const list = document.querySelector(`#${this.type}-projects ul`);
 
-  // }
+    list.addEventListener("dragenter", (event) => {
+      if (event.dataTransfer.types[0] === "text/plain") {
+        list.parentElement.classList.add("droppable");
+        event.preventDefault();
+      }
+    });
+    list.addEventListener("dragover", (event) => {
+      if (event.dataTransfer.types[0] === "text/plain") {
+        event.preventDefault();
+      }
+    });
+    list.addEventListener("dragleave", (event) => {
+      if (event.relatedTarget.closest(`#${this.type}-project ul`) !== list) {
+        list.parentElement.classList.remove("droppable");
+      }
+    });
+  }
 
   setSwitchHandlerFunction(switchHandlerFunction) {
     this.switchHandler = switchHandlerFunction;
