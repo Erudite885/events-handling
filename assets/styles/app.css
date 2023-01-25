@@ -10,6 +10,10 @@ body {
   margin: 0;
 }
 
+.droppable {
+  background: #ffe0ec;
+}
+
 #main-header {
   width: 100%;
   height: 6rem;
